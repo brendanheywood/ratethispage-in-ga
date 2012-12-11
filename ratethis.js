@@ -1,9 +1,20 @@
 !function ($) {
     "use strict";
-    var opts=['Not useful','Meh','Ok','Good','Great']; 
+    var def = {
+        'opts': 'Not useful,Meh,Ok,Good,Great',
+        'prom': 'Rate this page: ',
+        'category': 'website',
+        'action': 'rating'
+    }
 
     $('.ratethispage').each(function(i,e){
-
+        var $e = $(e);
+        var $hint;
+        var opts     = ($e.data('opts')     || def.opts).split(',');
+        var prom     =  $e.data('prompt')   || def.prom;
+        var category =  $e.data('category') || def.category;
+        var action   =  $e.data('action')   || def.action;
+ 
         function show(n){
             n = n || 0;
             $hint.text(' '+(opts[n-1] || ''));
@@ -14,9 +25,7 @@
                 $e.find('i').attr('class','icon-star-empty');
             }
         }
-        var $e = $(e);
-        $e.addClass('alert alert-info').append('<b>Rate this page: </b>');
-        var $hint;
+        $e.addClass('alert alert-info').append('<b>'+prom+'</b>');
         for(var c=0;c<opts.length; c++){
             $('<a href="#" data-val="'+(c+1)+'"><i class="icon-star-empty" ></i></a>')
                 .appendTo($e)
@@ -33,6 +42,7 @@
                         $e.addClass('alert-success').removeClass('alert-info');
                         $e.find('a').unbind().removeAttr('href');
                         show(val);
+                        _gaq.push(['_trackEvent', category, action, opts[val-1], val]);
                         return false;
                     }
                 });

@@ -3,17 +3,16 @@ ratethispage-in-ga
 
 A rate-this-page widget which sends all data direct to Google Analytics
 
-It is themed with bootstrap and is basically zero config.
+It is themed with bootstrap and is basically zero config in the simplest usage:
 
-Just add a div somewhere like this
-
+```
 <div class="ratethispage"></div>
+```
 
+Or you can override almost anything with full data attr usage:
 
-* if GA is on the page
-* then draw the 5 star widget
-* on click send the data to GA as an event
-
-
+```
+<div class="ratethispage" data-prompt="What you reckon?" data-opts="1,2,3" data-category="category" data-action="action" data-label="label"></div>
+```
 
 
