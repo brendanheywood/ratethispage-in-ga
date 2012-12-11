@@ -1,7 +1,7 @@
-ratethispage-in-ga
+Rate this page in Google Analytics
 ==================
 
-A rate-this-page widget which sends all data direct to Google Analytics
+A rate-this-page widget which sends all data direct to Google Analytics. After all that's probably the only place you really care for that data.
 
 It is themed with bootstrap and is basically zero config in the simplest usage:
 
